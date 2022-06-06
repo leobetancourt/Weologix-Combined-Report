@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Weologix Combined Report</title>
+
+    <script id="trait-pair-page" type="text/x-custom-template">
+        <article id={{id}}>
+            <div class="bg">
+                <div class="fg">
+                    <div class='content'>
+                        <div class='heading'>
+                            <img class='icon' src={{icon}}>
+                            <h2>{{section}}</h2>
+                        </div> 
+                        <hr>
+                    </div>
+                    <p class="pg-number">{{page}}<p>
+                </div>
+            </div>
+        </article>
+    </script>
+
+    <script id="trait-pair" type="text/x-custom-template">
+        <h3>{{traitPair}}</h3>
+        <div class='bar-charts-cont'>
+            <section>
+                <img class='bar-chart' src={{bar1}}>
+                <!-- <div>
+                    <h4>Top <br>Candidates</h4>
+                    <div class='top-cand-entry' style="background-color: {{trait1Best.0}}"></div>
+                    <div class='top-cand-entry' style="background-color: {{trait1Best.1}}"></div>
+                </div> -->
+            </section>
+            <section>
+                <img class='bar-chart' src={{bar2}}>
+                <!-- <div>
+                    <h4>Top <br>Candidates</h4>
+                    <div class='top-cand-entry' style="background-color: {{trait2Best.0}}"></div>
+                    <div class='top-cand-entry' style="background-color: {{trait2Best.1}}"></div>
+                </div> -->
+            </section>
+        </div>
+        <div class='top-cand-cont'>
+        </div>
+        <div class='trait-pair-cont'>
+            <img class='trait-pair-chart' src={{traitPairChart}}>
+            <p>{{{traitPairDesc}}}</p>
+        </div>
+        <br>
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./node_modules/mustache/mustache.min.js"> </script>
+    <script type="text/javascript" src="./js/canvas2svg.js"> </script>
+    <script type="text/javascript" src="./js/traits.js"> </script>
+    <script type="text/javascript" src="./js/get-data.js"> </script>
+    <script type="text/javascript" src="./js/index.js"> </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <article class="title-article">
+        <div class="title-container">
+            <img src="./images/logo.svg" id="logo">
+            <img src="./images/wiser.svg" id="alpha">
+            <h1 id="title">Finalist Candidate<br>Report 2019<br><span id="desc">
+                    Wiser<br>25/11/19</span></h1>
+        </div>
+        <img src="./images/title-image.png" class="title-img">
+    </article>
+    <article id='top-cand-summary'>
+        <div class="bg">
+            <div class="fg">
+                <div class='content'>
+                    <div class='heading'>
+                        <img class='icon' src='images/match.png'>
+                        <h2>BEST MATCH BY TRAIT PAIR</h2>
+                    </div>
+                    <hr>
+                    <table id='top-cands'>
+                        <tr>
+                            <th>Trait Pair</th>
+                            <th>Best Match</th>
+                        </tr>
+                    </table>
+                </div>
+                <p class='pg-number'>1</p>
+            </div>
+        </div>
+    </article>
+    <section id="trait-pairs">
+
+    </section>
+    <!-- <article class="title-article">
+        <div class="title-container">
+            <img src="./images/logo.svg" id="logo">
+            <img src="./images/logo-alpha.jpg" id="alpha">
+            <h1 id="title">Candidate<br>Detail<br><span class="desc"><strong>Candidate #1</strong>
+                    <br>Name: Loreto Dominguez</h1>
+        </div>
+        <img src="./images/title-image.png" class="title-img">
+    </article>
+    <article class="title-article">
+        <div class="title-container">
+            <img src="./images/logo.svg" id="logo">
+            <img src="./images/logo-alpha.jpg" id="alpha">
+            <h1 id="title">Candidate<br>Detail<br><span class="desc"><strong>Candidate #2</strong>
+                    <br>Name: Laia Soler</h1>
+        </div>
+        <img src="./images/title-image.png" class="title-img">
+    </article> -->
+    <!-- <article>
+        <div class="bg">
+            <div class="fg">
+                <div class="content">
+                    <div class="heading">
+                        <img src="./images/role.svg" class="icon">
+                        <h2>KEY TRAITS: HRD ROLE-SPECIFIC</h2>
+                    </div>
+
+                    <hr>
+
+                    <p class="description"> The following 20 behavioural traits have been selected as
+                        "mission-critical" based on the specific requirements of this particular role.</p>
+                    <table id="datatable-0">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <article>
+        <div class="bg">
+            <div class="fg">
+                <div class="content">
+                    <div class="heading">
+                        <img src="./images/technical.svg" class="icon">
+                        <h2>SELF-ASSESSED TECHNICAL/ROLE SPECIFIC SKILLS</h2>
+                    </div>
+                    <hr>
+                    <table id="datatable-skills-0">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <article>
+        <div class="bg">
+            <div class="fg">
+                <div class="content">
+                    <div class="heading">
+                        <img src="./images/technical.svg" class="icon">
+                        <h2>SELF-ASSESSED TECHNICAL/ROLE SPECIFIC SKILLS</h2>
+                    </div>
+                    <hr>
+                    <table id="datatable-skills-1">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <article>
+        <div class="bg">
+            <div class="fg">
+                <div class="content">
+                    <div class="heading">
+                        <img src="./images/creativity.svg" class="icon">
+                        <h2>CREATIVITY</h2>
+                    </div>
+
+                    <hr>
+
+                    <p class="description">We've broken Creativity and Problem Solving down into the following
+                        key sub-component traits.</p>
+
+                    <table id="datatable-1">
+                    </table>
+
+                    <div class="heading">
+                        <img src="./images/problem.svg" class="icon">
+                        <h2>PROBLEM SOLVING</h2>
+                    </div>
+
+                    <hr>
+
+                    <p class="description"></p>
+
+                    <table id="datatable-2">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <article>
+        <div class="bg">
+            <div class="fg">
+                <div class="content">
+                    <div class="heading">
+                        <img src="./images/interpersonal.svg" class="icon">
+                        <h2>INTERPERSONAL SKILLS</h2>
+                    </div>
+
+                    <hr>
+
+                    <p class="description">We've selected key Interpersonal Skills that are critical to success
+                        in this people- and team-oriented role.</p>
+
+                    <table id="datatable-3">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <article>
+        <div class="bg">
+            <div class="fg">
+                <div class="content">
+                    <div class="heading">
+                        <img src="./images/communication.svg" class="icon">
+                        <h2>COMMUNICATION</h2>
+                    </div>
+
+                    <hr>
+
+                    <p class="description">We've selected key Communication skills that are critical to success
+                        in this people- and team-oriented role.</p>
+
+                    <table id="datatable-4">
+                    </table>
+                    <img id="yeeyee">
+
+                </div>
+
+            </div>
+        </div>
+    </article> -->
+</body>
+
+</html>
